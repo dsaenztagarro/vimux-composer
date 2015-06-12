@@ -1,0 +1,52 @@
+*vimux-composer.txt* Plugin for working with ZFTool utility for Zend Framework 2
+
+Author: David Saenz Tagarro <david.saenz.tagarro@gmail.com>
+
+===============================================================================
+CONTENTS                                                         *vimux-composer*
+
+    1. Intro ............................................. |vimux-composer-intro|
+    2. Requirements ............................... |vimux-composer-requirements|
+    3. Usage ............................................. |vimux-composer-usage|
+    4. About ............................................. |vimux-composer-about|
+    5. Licence ......................................... |vimux-composer-licence|
+===============================================================================
+1. Intro                                                   *vimux-composer-intro*
+
+Vimux-composer is designed to speed up your development workflow by providing
+commands to run the most relevant composer actions on the current project.
+
+It uses tmux's scriptability to send commands to a chosen pane in your
+tmux session.
+
+2. Requirements                                     *vimux-composer-requirements*
+
+- Vim running inside tmux session
+- Installed plugin: 'benmills/vimux'
+
+3. Usage                                                   *vimux-composer-usage*
+
+Normal Mode:
+
+Currently you have access to composer shell commands through:
+
+:ComposerSelfUpdate - Composer self update
+:ComposerInstall    - Composer install
+:ComposerUpdate     - Composer update
+
+4. About                                                   *vimux-composer-about*
+
+The latest stable version can be found at
+  http://www.vim.org/scripts/script.php?script_id=XXXX
+
+Bugs can be reported and the very latest development version can be retrieved
+from GitHub:
+  https://github.com/dsaenztagarro/vimux-composer
+  git clone git://github.com/dsaenztagarro/vimux-composer.git
+
+5. License                                               *vimux-composer-license*
+
+Copyright (c) David Saenz Tagarro.  Distributed under the same terms as Vim itself.
+See |license|.
+
+ vim:tw=78:ts=8:ft=help:norl:
