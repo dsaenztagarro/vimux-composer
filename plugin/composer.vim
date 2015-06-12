@@ -10,17 +10,22 @@ if exists('g:loaded_vimux_composer') || &cp
 endif
 let g:loaded_vimux_composer = 1
 
+" Utils {{{
+function! ComposerRunCommand(action)
+	call VimuxRunCommand('php composer.phar ' . a:action)
+endfunction
+" }}}
 " Interface {{{
 function! ComposerSelfUpdate()
-  call VimuxRunCommand('composer self-update')
+  call ComposerRunCommand('self-update')
 endfunction
 
 function! ComposerInstall()
-  call VimuxRunCommand('composer install')
+  call ComposerRunCommand('install')
 endfunction
 
-function! ComposeRUpdate()
-  call VimuxRunCommand('composer update')
+function! ComposerUpdate()
+  call ComposerRunCommand('update')
 endfunction
 " }}}
 " Commands {{{
