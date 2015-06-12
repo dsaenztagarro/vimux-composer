@@ -6,34 +6,21 @@
 " ----------------------------------------------------------------------------
 
 if exists('g:loaded_vimux_composer') || &cp
-  " finish
+  finish
 endif
 let g:loaded_vimux_composer = 1
 
-" Utility Functions {{{
-function RunWithVimux(cmd)
-  if exists('$TMUX')
-    if exists(':VimuxRunCommand')
-      call VimuxRunCommand(a:cmd)
-    else
-      echo 'ERROR: Missing vim plugin Vimux'
-    endif
-  else
-    echo 'ERROR: Required running inside TMUX session'
-  endif
-endfunction!
-" }}}
 " Interface {{{
 function! ComposerSelfUpdate()
-  call RunWithVimux('composer self-update')
+  call VimuxRunCommand('composer self-update')
 endfunction
 
 function! ComposerInstall()
-  call RunWithVimux('composer install')
+  call VimuxRunCommand('composer install')
 endfunction
 
 function! ComposeRUpdate()
-  call RunWithVimux('composer update')
+  call VimuxRunCommand('composer update')
 endfunction
 " }}}
 " Commands {{{
