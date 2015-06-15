@@ -10,9 +10,19 @@ if exists('g:loaded_vimux_composer') || &cp
 endif
 let g:loaded_vimux_composer = 1
 
+if !exists("g:vimux_composer_use_ctags")
+  let g:vimux_composer_use_ctags=0
+endif
+
 " Utils {{{
 function! ComposerCommand(action)
 	call VimuxRunCommand('php composer.phar ' . a:action)
+endfunction
+
+function! CTagsVendor()
+  if g:vimux_composer_use_ctags
+    call VimuxRunCommand('ctags -R -f tags.vendor vendor')
+  endif
 endfunction
 " }}}
 " Interface {{{
@@ -22,10 +32,12 @@ endfunction
 
 function! ComposerInstall()
   call ComposerCommand('install')
+  call CTagsVendor()
 endfunction
 
 function! ComposerUpdate()
   call ComposerCommand('update')
+  call CTagsVendor()
 endfunction
 " }}}
 " Commands {{{
