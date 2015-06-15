@@ -8,10 +8,10 @@ commands to run the most relevant composer actions on the current project.
 It uses tmux's scriptability to send commands to a chosen pane in your
 tmux session.
 
-## Requirements
+## Dependencies
 
-- Vim running inside tmux session
-- Installed plugin: [vimux](https://github.com/benmills/vimux)
+This plugin depends on [vimux][1]. It also makes the assumption that you're 
+using tmux.
 
 ## Usage
 
@@ -31,19 +31,25 @@ You can easily map them as needed like this:
 
 Use your plugin manager of choice.
 
-- [Pathogen](https://github.com/tpope/vim-pathogen)
-  - `git clone https://github.com/dsaenztagarro/zftool ~/.vim/bundle/zftool`
-- [Vundle](https://github.com/gmarik/vundle)
-  - Add `Bundle 'https://github.com/dsaenztagarro/zftool'` to .vimrc
+- [Pathogen][2]
+  - `git clone https://github.com/dsaenztagarro/vimux-composer ~/.vim/bundle/vimux-composer`
+- [Vundle][3]
+  - Add `Bundle 'https://github.com/dsaenztagarro/vimux-composer'` to .vimrc
   - Run `:BundleInstall`
-- [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  - Add `NeoBundle 'https://github.com/dsaenztagarro/zftool'` to .vimrc
+- [NeoBundle][4]
+  - Add `NeoBundle 'https://github.com/dsaenztagarro/vimux-composer'` to .vimrc
   - Run `:NeoBundleInstall`
-- [vim-plug](https://github.com/junegunn/vim-plug)
-  - Add `Plug 'https://github.com/dsaenztagarro/zftool'` to .vimrc
+- [vim-plug][5]
+  - Add `Plug 'https://github.com/dsaenztagarro/vimux-composer'` to .vimrc
   - Run `:PlugInstall`
 
 ## License
 
 Copyright (c) David Saenz Tagarro.  Distributed under the same terms as Vim itself.
 See `:help license`.
+
+[1]: https://github.com/benmills/vimux
+[2]: https://github.com/tpope/vim-pathogen
+[3]: https://github.com/gmarik/vundle
+[4]: https://github.com/Shougo/neobundle.vim
+[5]: https://github.com/junegunn/vim-plug
