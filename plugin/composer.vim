@@ -11,21 +11,21 @@ endif
 let g:loaded_vimux_composer = 1
 
 " Utils {{{
-function! ComposerRunCommand(action)
+function! ComposerCommand(action)
 	call VimuxRunCommand('php composer.phar ' . a:action)
 endfunction
 " }}}
 " Interface {{{
 function! ComposerSelfUpdate()
-  call ComposerRunCommand('self-update')
+  call ComposerCommand('self-update')
 endfunction
 
 function! ComposerInstall()
-  call ComposerRunCommand('install')
+  call ComposerCommand('install')
 endfunction
 
 function! ComposerUpdate()
-  call ComposerRunCommand('update')
+  call ComposerCommand('update')
 endfunction
 " }}}
 " Commands {{{

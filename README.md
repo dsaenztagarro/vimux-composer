@@ -15,17 +15,26 @@ using tmux.
 
 ## Usage
 
-Normal Mode Commands:
+The function `ComposerCommand(cmd, args)` is the core of vimux-composer. It will
+run a composer command in a vimux window:
 
-- ComposerSelfUpdate - Composer self update
-- ComposerInstall    - Composer install
-- ComposerUpdate     - Composer update
+    :call ComposerCommand("run-script")
 
-You can easily map them as needed like this:
+    # => php composer.phar run-script
+
+
+There are also a number of pre-defined [commands](#commands). You can easily map
+them as needed like this:
 
     map <Leader>cc :ComposerSelfUpdate<CR>
     map <Leader>ci :ComposerInstall<CR>
     map <Leader>cu :ComposerUpdate<CR>
+
+## Commands
+
+* ComposerSelfUpdate 
+* ComposerInstall    
+* ComposerUpdate     
 
 ## Installation
 
