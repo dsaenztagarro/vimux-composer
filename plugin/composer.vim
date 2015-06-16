@@ -10,18 +10,27 @@ if exists('g:loaded_vimux_composer') || &cp
 endif
 let g:loaded_vimux_composer = 1
 
+if !exists("g:vimux_composer_command")
+  let g:vimux_composer_command='php composer.phar config --global discard-changes true &&
+    \ php composer.phar --no-interaction'
+endif
+
 if !exists("g:vimux_composer_use_ctags")
   let g:vimux_composer_use_ctags=0
 endif
 
+if !exists("g:vimux_composer_ctags_command")
+  let g:vimux_composer_ctags_command='ctags -R -f tags.vendor vendor'
+endif
+
 " Utils {{{
 function! ComposerCommand(action)
-	call VimuxRunCommand('php composer.phar ' . a:action)
+	call VimuxRunCommand(g:vimux_composer_command . ' ' . a:action)
 endfunction
 
-function! CTagsVendor()
+function! CTagsCommand()
   if g:vimux_composer_use_ctags
-    call VimuxRunCommand('ctags -R -f tags.vendor vendor')
+    call VimuxRunCommand(g:vimux_composer_ctags_command)
   endif
 endfunction
 " }}}
@@ -32,12 +41,12 @@ endfunction
 
 function! ComposerInstall()
   call ComposerCommand('install')
-  call CTagsVendor()
+  call CTagsCommand()
 endfunction
 
 function! ComposerUpdate()
   call ComposerCommand('update')
-  call CTagsVendor()
+  call CTagsCommand()
 endfunction
 " }}}
 " Commands {{{

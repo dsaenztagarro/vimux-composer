@@ -3,15 +3,17 @@
 Author: David Saenz Tagarro <david.saenz.tagarro@gmail.com>
 
 ===============================================================================
-CONTENTS                                                         *vimux-composer*
+CONTENTS                                                        *vimux-composer*
 
-    1. Intro ............................................. |vimux-composer-intro|
-    2. Requirements ............................... |vimux-composer-requirements|
-    3. Usage ............................................. |vimux-composer-usage|
-    4. About ............................................. |vimux-composer-about|
-    5. Licence ......................................... |vimux-composer-licence|
+    1. Intro ............................................ |vimux-composer-intro|
+    2. Requirements .............................. |vimux-composer-requirements|
+    3. Usage ............................................ |vimux-composer-usage|
+    4. Commands ...................................... |vimux-composer-commands|
+    4. Settings ...................................... |vimux-composer-settings|
+    6. About ............................................ |vimux-composer-about|
+    7. Licence ........................................ |vimux-composer-licence|
 ===============================================================================
-1. Intro                                                   *vimux-composer-intro*
+1. Intro                                                  *vimux-composer-intro*
 
 Vimux-composer is designed to speed up your development workflow by providing
 commands to run the most relevant composer actions on the current project.
@@ -19,22 +21,56 @@ commands to run the most relevant composer actions on the current project.
 It uses tmux's scriptability to send commands to a chosen pane in your
 tmux session.
 
-2. Requirements                                     *vimux-composer-requirements*
+2. Requirements                                    *vimux-composer-requirements*
 
-- Vim running inside tmux session
-- Installed plugin: 'benmills/vimux'
+This plugin is tested against Vim version 7.4 or later.
 
-3. Usage                                                   *vimux-composer-usage*
+This plugin depends on vimux. You can find it here:
+https://github.com/benmills/vimux
 
-Normal Mode:
+It also makes the assumption that you're using tmux.
 
-Currently you have access to composer shell commands through:
+3. Usage                                                  *vimux-composer-usage*
+
+The function `ComposerCommand(cmd, args)` is the core of vimux-composer. It will
+run a composer command in a vimux window:
+
+    :call ComposerCommand("run-script")
+
+    # => php composer.phar run-script
+
+
+There are also a number of pre-defined [commands](#commands). You can easily map
+them as needed like this:
+
+    map <Leader>cc :ComposerSelfUpdate<CR>
+    map <Leader>ci :ComposerInstall<CR>
+    map <Leader>cu :ComposerUpdate<CR>
+
+4. Commands                                            *vimux-composer-commands*
 
 :ComposerSelfUpdate - Composer self update
 :ComposerInstall    - Composer install
 :ComposerUpdate     - Composer update
 
-4. About                                                   *vimux-composer-about*
+5. Settings                                            *vimux-composer-settings*
+
+g:vimux_composer_command
+
+The composer command to be executed. Default:
+
+  let g:vimux_composer_command='php composer.phar config --global discard-changes true &&
+    \ php composer.phar --no-interaction'
+
+g:vimux_composer_use_ctags (Default: 0)
+
+Marks whether or not it is called ctags after updating composer dependencies
+
+g:vimux_composer_ctags_command (Default: 'ctags -R -f tags.vendor vendor')
+
+The custom ctags command to be executed
+
+6. About                                                   *vimux-composer-about*
 
 The latest stable version can be found at
   http://www.vim.org/scripts/script.php?script_id=XXXX
@@ -44,7 +80,7 @@ from GitHub:
   https://github.com/dsaenztagarro/vimux-composer
   git clone git://github.com/dsaenztagarro/vimux-composer.git
 
-5. License                                               *vimux-composer-license*
+7. License                                               *vimux-composer-license*
 
 Copyright (c) David Saenz Tagarro.  Distributed under the same terms as Vim itself.
 See |license|.
