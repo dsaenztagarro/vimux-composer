@@ -16,7 +16,7 @@ if !exists("g:vimux_composer_command")
 endif
 
 if !exists("g:vimux_composer_use_ctags")
-  let g:vimux_composer_use_ctags=0
+  let g:vimux_composer_use_ctags=1
 endif
 
 if !exists("g:vimux_composer_ctags_command")

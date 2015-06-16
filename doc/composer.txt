@@ -62,7 +62,7 @@ The composer command to be executed. Default:
   let g:vimux_composer_command='php composer.phar config --global discard-changes true &&
     \ php composer.phar --no-interaction'
 
-g:vimux_composer_use_ctags (Default: 0)
+g:vimux_composer_use_ctags (Default: 1)
 
 Marks whether or not it is called ctags after updating composer dependencies
 
