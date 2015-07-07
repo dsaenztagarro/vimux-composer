@@ -12,7 +12,7 @@ let g:loaded_vimux_composer = 1
 
 if !exists("g:vimux_composer_command")
   let g:vimux_composer_command='php composer.phar config --global discard-changes true &&
-    \ php composer.phar --no-interaction'
+    \ php composer.phar --no-interaction --no-dev'
 endif
 
 if !exists("g:vimux_composer_use_ctags")
