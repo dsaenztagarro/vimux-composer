@@ -12,7 +12,7 @@ let g:loaded_vimux_composer = 1
 
 if !exists("g:vimux_composer_command")
   let g:vimux_composer_command='php composer.phar config --global discard-changes true &&
-    \ php composer.phar --no-interaction --no-dev'
+    \ php composer.phar --no-interaction'
 endif
 
 if !exists("g:vimux_composer_use_ctags")
@@ -25,7 +25,8 @@ endif
 
 " Utils {{{
 function! ComposerCommand(action)
-	call VimuxRunCommand(g:vimux_composer_command . ' ' . a:action)
+  let cwd = getcwd()
+	call VimuxRunCommand('cd ' . cwd . ' && ' . g:vimux_composer_command . ' ' . a:action)
 endfunction
 
 function! CTagsCommand()
